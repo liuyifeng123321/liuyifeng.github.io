@@ -1,0 +1,19 @@
+### 样式穿透
+> 什么是样式穿透
+- 例如在elementui中一些属性写在了源码的行内样式中,使用!important不能修改行内样式就用到了样式穿透
+> 使用方法
+1. 不推荐 >>>
+2. /deep/
+3. ::v-deep
+```
+ <el-form-item label="黑名单移入人" prop="creator" class="itemLable itemInp">
+        <el-input v-model="detailsSon.creator" readonly/>
+ </el-form-item>
+ ------------- css ------------
+ .itemLable /deep/ .el-form-item__label{
+    width: 100px !important;
+ }
+ .itemInp /deep/ .el-form-item__content {
+    margin-left: 100px !important;
+ }
+```
